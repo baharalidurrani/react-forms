@@ -3,11 +3,11 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, ValidateResult, useForm } from "react-hook-form";
 
 type Inputs = {
-  example: string;
-  exampleRequired: string;
+  name: string;
+  password: string;
 };
 
 export default function HookForm(): React.ReactElement {
@@ -17,12 +17,34 @@ export default function HookForm(): React.ReactElement {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    defaultValues: { name: "Default Name", password: "Default Pass" },
+  });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log("form Submitted", data);
+  };
 
   // console.log(watch("example")); // watch input value by passing the name of it
+  const isCorrect = (
+    value: string,
+    formValues: Inputs
+  ): ValidateResult | Promise<ValidateResult> => {
+    console.log("formValues");
+    console.log(formValues);
+    if (value.includes("valid")) return true;
+    else return `Value must include the word "valid" `;
 
+    return true; // Valid
+    return "Error Message!";
+    // return new Promise<string | boolean>((res) => {
+    //   setTimeout(() => {
+    //     res(true); // Valid
+    //     res("Async Error Message!");
+    //   }, 5000);
+    // });
+  };
+  console.log(errors);
   return (
     <>
       <Box m={3}>
@@ -33,33 +55,30 @@ export default function HookForm(): React.ReactElement {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
           <TextField
-            required
+            // required
             label="Name"
             placeholder="Hello World"
-            // name="name"
-            {...register("example")}
+            error={Boolean(errors.name)}
+            helperText={errors.name ? errors.name?.message || "Inline" : null}
+            {...register("name", {
+              validate: isCorrect,
+            })}
           />
           <TextField
             required
             label="Password"
             type="password"
+            error={Boolean(errors.password)}
+            helperText={errors.password?.message ?? null}
             placeholder="********"
-            // name="password"
-            {...register("exampleRequired", { required: true })}
+            {...register("password", {
+              required: true,
+            })}
           />
           <Button type="submit" variant="contained">
             Submit
           </Button>
         </Stack>
-        {/* register your input into the hook by invoking the "register" function */}
-        {/* <input defaultValue="test" {...register("example")} /> */}
-
-        {/* include validation with required or other standard HTML validation rules */}
-        {/* <input {...register("exampleRequired", { required: true })} /> */}
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
-
-        {/* <input type="submit" /> */}
       </form>
     </>
   );
