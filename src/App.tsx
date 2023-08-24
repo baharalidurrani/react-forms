@@ -3,6 +3,7 @@ import FormikForm from "./forms/formik/FormikForm";
 import HookForm from "./forms/hook/HookForm";
 import VanillaForm from "./forms/vanilla/VanillaForm";
 import CustomMuiTheme from "./theme/CustomMuiTheme";
+import CreateShipmentDialog from "./shipment/CreateShipmentDialog";
 
 export default function App() {
   console.log("🚀🚀🚀 App Rendered");
@@ -10,6 +11,7 @@ export default function App() {
   return (
     <CustomMuiTheme>
       <Container>
+        <CreateShipmentDialog />
         <VanillaForm />
         <Box m={3} />
         <Divider />
