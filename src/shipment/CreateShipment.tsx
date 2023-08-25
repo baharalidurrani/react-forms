@@ -13,17 +13,17 @@ export default function CreateShipment(): React.ReactElement {
   return (
     <Grid container spacing={2} margin={1}>
       <Grid container xs={12} md={8}>
-        <Grid xs={6}>
-          <PickupDetails />
-        </Grid>
-        <Grid xs={6}>
-          <DropOffDetails />
-        </Grid>
         <Grid xs={12}>
           <ShipmentDetails />
         </Grid>
         <Grid xs={12}>
           <VehicleDetails />
+        </Grid>
+        <Grid xs={6}>
+          <PickupDetails />
+        </Grid>
+        <Grid xs={6}>
+          <DropOffDetails />
         </Grid>
         <Grid xs={12}>
           <GoodsDetails />
