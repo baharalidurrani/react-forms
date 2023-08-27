@@ -24,7 +24,12 @@ export default function ShipmentDetails(): React.ReactElement {
           <Typography variant="h6">Shipment Details</Typography>
         </Stack>
         <Stack direction="row" spacing={4}>
-          <TextField label="Shipper Entity" name="shipperEntity" fullWidth />
+          <TextField
+            label="Shipper Entity"
+            name="shipperEntity"
+            required
+            fullWidth
+          />
           <TextField label="Shipper Project" name="shipperProject" fullWidth />
         </Stack>
         <Stack direction="row" spacing={4}>

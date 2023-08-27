@@ -24,6 +24,18 @@ export default function CreateShipmentDialog(): React.ReactElement {
 
   const [open, setOpen] = React.useState(false);
 
+  /** Mimic calling child's method. */
+  const [submitCounter, setSubmitCounter] = React.useState(0);
+
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+
+    const shipperForm = new FormData(event.currentTarget);
+    const shipperObject = Object.fromEntries(shipperForm.entries());
+    console.log("shipperObject", shipperObject);
+    handleClose();
+  };
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -56,12 +68,19 @@ export default function CreateShipmentDialog(): React.ReactElement {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               Create New Shipment
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
+            <Button
+              autoFocus
+              color="inherit"
+              onClick={() => setSubmitCounter((prev) => prev + 1)}
+            >
               save
             </Button>
           </Toolbar>
         </AppBar>
-        <CreateShipment />
+        <CreateShipment
+          submitCounter={submitCounter}
+          submitHandler={submitHandler}
+        />
       </Dialog>
     </div>
   );
