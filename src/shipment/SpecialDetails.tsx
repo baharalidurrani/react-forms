@@ -4,12 +4,13 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 export default function SpecialDetails(): React.ReactElement {
   console.log("🔄 SpecialDetails Rendered");
   return (
-    <Accordion variant="outlined">
+    <Accordion variant="outlined" TransitionProps={{ unmountOnExit: true }}>
       <AccordionSummary
         expandIcon={<ExpandMore />}
         aria-controls="SpecialDetails-content"
@@ -21,10 +22,7 @@ export default function SpecialDetails(): React.ReactElement {
         </Stack>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </Typography>
+        <TextField label="Description" fullWidth />
       </AccordionDetails>
     </Accordion>
   );

@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 export default function GoodsDetails(): React.ReactElement {
   console.log("🔄 GoodsDetails Rendered");
   return (
-    <Accordion variant="outlined">
+    <Accordion variant="outlined" TransitionProps={{ unmountOnExit: true }}>
       <AccordionSummary
         expandIcon={<ExpandMore />}
         aria-controls="GoodsDetails-content"

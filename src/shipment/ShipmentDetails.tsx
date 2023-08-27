@@ -23,16 +23,16 @@ export default function ShipmentDetails(): React.ReactElement {
           <BookOutlinedIcon color="info" />
           <Typography variant="h6">Shipment Details</Typography>
         </Stack>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <TextField label="Shipper Entity" fullWidth />
           <TextField label="Shipper Project" fullWidth />
         </Stack>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <TextField label="Shipper Personal Name" fullWidth />
           <TextField label="Contact Number" type="tel" fullWidth />
         </Stack>
 
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <FormControl fullWidth>
             <FormLabel id="radio-buttons-group-payment-type-label">
               Select Payment Type
@@ -86,7 +86,7 @@ export default function ShipmentDetails(): React.ReactElement {
           </FormControl>
         </Stack>
 
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <FormControl fullWidth>
             <FormLabel id="radio-buttons-group-shipment-type-label">
               Select Shipment Type
@@ -139,7 +139,7 @@ export default function ShipmentDetails(): React.ReactElement {
             </RadioGroup>
           </FormControl>
         </Stack>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <FormControl fullWidth>
             <FormControlLabel
               control={<Switch />}
@@ -166,7 +166,7 @@ export default function ShipmentDetails(): React.ReactElement {
             />
           </FormControl>
         </Stack>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={4}>
           <TextField label="Shipper Rate" fullWidth />
           <TextField label="Maximum Amount" fullWidth />
         </Stack>
