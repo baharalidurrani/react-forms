@@ -25,19 +25,31 @@ export default function ContainerDetails(): React.ReactElement {
       <AccordionDetails>
         <Grid2 container spacing={4}>
           <Grid2 xs={6}>
-            <TextField label="BL Number" fullWidth />
+            <TextField label="BL Number" name="blNumber" fullWidth />
           </Grid2>
           <Grid2 xs={6}>
-            <TextField label="Return Date" fullWidth />
+            <TextField label="Return Date" name="returnDate" fullWidth />
           </Grid2>
           <Grid2 xs={6}>
-            <TextField label="Detention Charges Per Day" fullWidth />
+            <TextField
+              label="Detention Charges Per Day"
+              name="detentionCharges"
+              fullWidth
+            />
           </Grid2>
           <Grid2 xs={6}>
-            <TextField label="Number of Containers" fullWidth />
+            <TextField
+              label="Number of Containers"
+              name="numberOfContainers"
+              fullWidth
+            />
           </Grid2>
           <Grid2 xs={6}>
-            <TextField label="Return Location" fullWidth />
+            <TextField
+              label="Return Location"
+              name="returnLocation"
+              fullWidth
+            />
           </Grid2>
         </Grid2>
       </AccordionDetails>

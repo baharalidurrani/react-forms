@@ -13,8 +13,8 @@ export default function DropOffDetails(): React.ReactElement {
           <PinDropOutlinedIcon color="info" />
           <Typography variant="h6">Drop Off Details</Typography>
         </Stack>
-        <TextField label="Drop Off City" fullWidth />
-        <TextField label="Drop Off Address" fullWidth />
+        <TextField label="Drop Off City" name="dropOffCity" fullWidth />
+        <TextField label="Drop Off Address" name="dropOffAddress" fullWidth />
       </Stack>
     </Paper>
   );

@@ -15,12 +15,20 @@ export default function VehicleDetails(): React.ReactElement {
           <Typography variant="h6">Vehicle Details</Typography>
         </Stack>
         <Stack direction="row" spacing={2}>
-          <TextField label="Vehicle Type" fullWidth />
-          <TextField label="Vehicle Variant" fullWidth />
+          <TextField label="Vehicle Type" name="vehicleType" fullWidth />
+          <TextField label="Vehicle Variant" name="vehicleVariant" fullWidth />
         </Stack>
         <Stack direction="row" spacing={2}>
-          <TextField label="Number of Vehicles" fullWidth />
-          <TextField label="Total Shipment Weight" fullWidth />
+          <TextField
+            label="Number of Vehicles"
+            name="numberOfVehicles"
+            fullWidth
+          />
+          <TextField
+            label="Total Shipment Weight"
+            name="shipmentWeight"
+            fullWidth
+          />
         </Stack>
       </Stack>
     </Paper>

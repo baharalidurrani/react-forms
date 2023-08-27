@@ -22,7 +22,7 @@ export default function SpecialDetails(): React.ReactElement {
         </Stack>
       </AccordionSummary>
       <AccordionDetails>
-        <TextField label="Description" fullWidth />
+        <TextField label="Description" name="description" fullWidth />
       </AccordionDetails>
     </Accordion>
   );

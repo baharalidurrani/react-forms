@@ -13,9 +13,9 @@ export default function PickupDetails(): React.ReactElement {
           <PlaceOutlinedIcon color="info" />
           <Typography variant="h6">Pickup Details</Typography>
         </Stack>
-        <TextField label="Pickup City" fullWidth />
-        <TextField label="Pickup Address" fullWidth />
-        <TextField label="Date & Time" fullWidth />
+        <TextField label="Pickup City" name="pickupCity" fullWidth />
+        <TextField label="Pickup Address" name="pickupAddress" fullWidth />
+        <TextField label="Date & Time" name="dateTime" fullWidth />
       </Stack>
     </Paper>
   );

@@ -24,12 +24,21 @@ export default function ShipmentDetails(): React.ReactElement {
           <Typography variant="h6">Shipment Details</Typography>
         </Stack>
         <Stack direction="row" spacing={4}>
-          <TextField label="Shipper Entity" fullWidth />
-          <TextField label="Shipper Project" fullWidth />
+          <TextField label="Shipper Entity" name="shipperEntity" fullWidth />
+          <TextField label="Shipper Project" name="shipperProject" fullWidth />
         </Stack>
         <Stack direction="row" spacing={4}>
-          <TextField label="Shipper Personal Name" fullWidth />
-          <TextField label="Contact Number" type="tel" fullWidth />
+          <TextField
+            label="Shipper Personal Name"
+            name="shipperName"
+            fullWidth
+          />
+          <TextField
+            label="Contact Number"
+            name="shipperContactNumber"
+            type="tel"
+            fullWidth
+          />
         </Stack>
 
         <Stack direction="row" spacing={4}>
@@ -45,8 +54,8 @@ export default function ShipmentDetails(): React.ReactElement {
             <RadioGroup
               row
               aria-labelledby="radio-buttons-group-payment-type-label"
-              defaultValue="toPay"
-              name="radio-buttons-group"
+              // defaultValue="toPay"
+              name="paymentType"
             >
               <FormControlLabel value="pay" control={<Radio />} label="Pay" />
               <FormControlLabel
@@ -70,7 +79,7 @@ export default function ShipmentDetails(): React.ReactElement {
               row
               aria-labelledby="radio-buttons-group-pod-label"
               // defaultValue={true}
-              name="radio-buttons-group"
+              name="pod"
             >
               <FormControlLabel
                 value={true}
@@ -100,7 +109,7 @@ export default function ShipmentDetails(): React.ReactElement {
               row
               aria-labelledby="radio-buttons-group-shipment-type-label"
               // defaultValue="toPay"
-              name="radio-buttons-group"
+              name="shipmentType"
             >
               <FormControlLabel value="spot" control={<Radio />} label="Spot" />
               <FormControlLabel
@@ -124,7 +133,7 @@ export default function ShipmentDetails(): React.ReactElement {
               row
               aria-labelledby="radio-buttons-group-pricing-type-label"
               // defaultValue={true}
-              name="radio-buttons-group"
+              name="pricingType"
             >
               <FormControlLabel
                 value="perVehicle"
@@ -142,13 +151,13 @@ export default function ShipmentDetails(): React.ReactElement {
         <Stack direction="row" spacing={4}>
           <FormControl fullWidth>
             <FormControlLabel
-              control={<Switch />}
+              control={<Switch name="autoBitAcceptance" />}
               label="Auto Bid Acceptance"
             />
           </FormControl>
           <FormControl fullWidth>
             <FormControlLabel
-              control={<Switch />}
+              control={<Switch name="autoBitNegotiation" />}
               label={
                 <>
                   <span>Auto Bid Negotiation</span>
@@ -167,8 +176,8 @@ export default function ShipmentDetails(): React.ReactElement {
           </FormControl>
         </Stack>
         <Stack direction="row" spacing={4}>
-          <TextField label="Shipper Rate" fullWidth />
-          <TextField label="Maximum Amount" fullWidth />
+          <TextField label="Shipper Rate" name="shipperRate" fullWidth />
+          <TextField label="Maximum Amount" name="maximumAmount" fullWidth />
         </Stack>
       </Stack>
     </Paper>
