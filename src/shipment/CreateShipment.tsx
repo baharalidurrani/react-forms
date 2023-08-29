@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2';
 import { FormEvent, useEffect, useRef } from 'react';
 import ContainerDetails from './ContainerDetails';
@@ -53,11 +52,6 @@ export default function CreateShipment({
         </Grid>
         <Grid xs={12} md={4}>
           <ShipmentSummary />
-        </Grid>
-        <Grid xs={12} md={4}>
-          <Button type="submit" variant="contained">
-            Submit
-          </Button>
         </Grid>
       </Grid>
     </form>
