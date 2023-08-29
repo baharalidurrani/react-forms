@@ -8,10 +8,17 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import FormAutocomplete from './FormAutocomplete';
+
+/** CSS - Hide Up/Down Arrow on the number fields. */
+const hideNumberFieldArrows = {
+  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': { display: 'none' },
+  '& input[type=number]': {
+    MozAppearance: 'textfield',
+  },
+};
 
 export default function VehicleDetails(): React.ReactElement {
   console.log('🔄 VehicleDetails Rendered');
@@ -59,11 +66,7 @@ export default function VehicleDetails(): React.ReactElement {
               inputProps={{ min: 1 }}
               sx={{
                 input: { textAlign: 'center' },
-                // Hide Up/Down Arrow on the number fields.
-                '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': { display: 'none' },
-                '& input[type=number]': {
-                  MozAppearance: 'textfield',
-                },
+                ...hideNumberFieldArrows,
               }}
               startAdornment={
                 <InputAdornment position="start">
@@ -83,7 +86,18 @@ export default function VehicleDetails(): React.ReactElement {
           </FormControl>
         </Grid>
         <Grid xs={6}>
-          <TextField label="Total Shipment Weight" name="shipmentWeight" fullWidth />
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel htmlFor="shipmentWeight">Total Shipment Weight</InputLabel>
+            <OutlinedInput
+              id="shipmentWeight"
+              name="shipmentWeight"
+              label="Total Shipment Weight"
+              type="number"
+              inputProps={{ min: 1 }}
+              sx={hideNumberFieldArrows}
+              endAdornment={<InputAdornment position="end">Tonnes</InputAdornment>}
+            />
+          </FormControl>
         </Grid>
       </Grid>
     </Paper>

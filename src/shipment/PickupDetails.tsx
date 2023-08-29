@@ -31,7 +31,6 @@ export default function PickupDetails(): React.ReactElement {
           options={['Karachi', 'Lahore', 'Islamabad', 'Faisalabad', 'Rawalpindi']}
         />
         <TextField label="Pickup Address" name="pickupAddress" fullWidth />
-        <TextField label="Date & Time" name="dateTime" fullWidth />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker label="Date & Time" disablePast />
         </LocalizationProvider>
