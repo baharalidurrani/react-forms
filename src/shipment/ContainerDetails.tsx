@@ -6,7 +6,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Grid from "@mui/material/Unstable_Grid2";
 
 export default function ContainerDetails(): React.ReactElement {
   console.log("🔄 ContainerDetails Rendered");
@@ -23,35 +23,35 @@ export default function ContainerDetails(): React.ReactElement {
         </Stack>
       </AccordionSummary>
       <AccordionDetails>
-        <Grid2 container spacing={4}>
-          <Grid2 xs={6}>
+        <Grid container spacing={4}>
+          <Grid xs={6}>
             <TextField label="BL Number" name="blNumber" fullWidth />
-          </Grid2>
-          <Grid2 xs={6}>
+          </Grid>
+          <Grid xs={6}>
             <TextField label="Return Date" name="returnDate" fullWidth />
-          </Grid2>
-          <Grid2 xs={6}>
+          </Grid>
+          <Grid xs={6}>
             <TextField
               label="Detention Charges Per Day"
               name="detentionCharges"
               fullWidth
             />
-          </Grid2>
-          <Grid2 xs={6}>
+          </Grid>
+          <Grid xs={6}>
             <TextField
               label="Number of Containers"
               name="numberOfContainers"
               fullWidth
             />
-          </Grid2>
-          <Grid2 xs={6}>
+          </Grid>
+          <Grid xs={6}>
             <TextField
               label="Return Location"
               name="returnLocation"
               fullWidth
             />
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
       </AccordionDetails>
     </Accordion>
   );

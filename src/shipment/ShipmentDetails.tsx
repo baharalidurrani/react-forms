@@ -12,9 +12,19 @@ import Switch from "@mui/material/Switch";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
+import FormAutocomplete from "./FormAutocomplete";
+import { TShipper, fetchList as searchCallback } from "./API";
 
 export default function ShipmentDetails(): React.ReactElement {
   console.log("🔄 ShipmentDetails Rendered");
+
+  const handleShipperEntity = (
+    _event: React.SyntheticEvent<Element, Event>,
+    value: TShipper | null
+  ): void => {
+    console.log("handleShipperEntity");
+    console.log(value);
+  };
 
   return (
     <Paper variant="outlined" sx={{ height: "100%", padding: 2 }}>
@@ -24,13 +34,22 @@ export default function ShipmentDetails(): React.ReactElement {
           <Typography variant="h6">Shipment Details</Typography>
         </Stack>
         <Stack direction="row" spacing={4}>
-          <TextField
-            label="Shipper Entity"
-            name="shipperEntity"
+          <FormAutocomplete
             required
             fullWidth
+            name="shipperEntity"
+            label="Shipper Entity"
+            onChange={handleShipperEntity}
+            searchCallback={searchCallback}
           />
-          <TextField label="Shipper Project" name="shipperProject" fullWidth />
+          <FormAutocomplete
+            required
+            label="Shipper Project"
+            name="shipperProject"
+            fullWidth
+            onChange={handleShipperEntity}
+            searchCallback={searchCallback}
+          />
         </Stack>
         <Stack direction="row" spacing={4}>
           <TextField
