@@ -1,22 +1,22 @@
-import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import FormAutocomplete from "./FormAutocomplete";
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import FormAutocomplete from './FormAutocomplete';
 
 export default function PickupDetails(): React.ReactElement {
-  console.log("🔄 PickupDetails Rendered");
+  console.log('🔄 PickupDetails Rendered');
 
-  function handleCityChange(
-    _event: React.SyntheticEvent<Element, Event>,
-    value: string | null
-  ): void {
-    console.log("handleCityChange", value);
+  function handleCityChange(_event: React.SyntheticEvent<Element, Event>, value: string | null): void {
+    console.log('handleCityChange', value);
   }
 
   return (
-    <Paper variant="outlined" sx={{ height: "100%", padding: 2 }}>
+    <Paper variant="outlined" sx={{ height: '100%', padding: 2 }}>
       <Stack spacing={4}>
         <Stack direction="row" alignItems="center" gap={1}>
           <PlaceOutlinedIcon color="info" />
@@ -28,16 +28,13 @@ export default function PickupDetails(): React.ReactElement {
           name="pickupCity"
           fullWidth
           onChange={handleCityChange}
-          options={[
-            "Karachi",
-            "Lahore",
-            "Islamabad",
-            "Faisalabad",
-            "Rawalpindi",
-          ]}
+          options={['Karachi', 'Lahore', 'Islamabad', 'Faisalabad', 'Rawalpindi']}
         />
         <TextField label="Pickup Address" name="pickupAddress" fullWidth />
         <TextField label="Date & Time" name="dateTime" fullWidth />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DateTimePicker label="Date & Time" disablePast />
+        </LocalizationProvider>
       </Stack>
     </Paper>
   );

@@ -1,12 +1,12 @@
-import { Box, Container, Divider } from "@mui/material";
-import FormikForm from "./forms/formik/FormikForm";
-import HookForm from "./forms/hook/HookForm";
-import VanillaForm from "./forms/vanilla/VanillaForm";
-import CustomMuiTheme from "./theme/CustomMuiTheme";
-import CreateShipmentDialog from "./shipment/CreateShipmentDialog";
+import { Box, Container, Divider } from '@mui/material';
+import FormikForm from './forms/formik/FormikForm';
+import HookForm from './forms/hook/HookForm';
+import VanillaForm from './forms/vanilla/VanillaForm';
+import CustomMuiTheme from './theme/CustomMuiTheme';
+import CreateShipmentDialog from './shipment/CreateShipmentDialog';
 
 export default function App() {
-  console.log("🚀🚀🚀 App Rendered");
+  console.log('🚀🚀🚀 App Rendered');
 
   return (
     <CustomMuiTheme>

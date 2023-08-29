@@ -1,29 +1,23 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import { useFormik } from "formik";
-import * as yup from "yup";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 const validationSchema = yup.object({
-  email: yup
-    .string()
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup
-    .string()
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
+  email: yup.string().email('Enter a valid email').required('Email is required'),
+  password: yup.string().min(8, 'Password should be of minimum 8 characters length').required('Password is required'),
 });
 
 export default function FormikForm(): React.ReactElement {
-  console.log("🌾🌾🌾 FormikForm Rendered");
+  console.log('🌾🌾🌾 FormikForm Rendered');
 
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      email: 'foobar@example.com',
+      password: 'foobar',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -35,7 +29,7 @@ export default function FormikForm(): React.ReactElement {
   return (
     <>
       <Box m={3}>
-        <Typography variant="h4" align={"center"}>
+        <Typography variant="h4" align={'center'}>
           Formik Form
         </Typography>
       </Box>

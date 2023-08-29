@@ -1,9 +1,9 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import { SubmitHandler, ValidateResult, useForm } from "react-hook-form";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { SubmitHandler, ValidateResult, useForm } from 'react-hook-form';
 
 type Inputs = {
   name: string;
@@ -11,32 +11,29 @@ type Inputs = {
 };
 
 export default function HookForm(): React.ReactElement {
-  console.log("🪝🪝🪝 HookForm Rendered");
+  console.log('🪝🪝🪝 HookForm Rendered');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
-    defaultValues: { name: "Default Name", password: "Default Pass" },
+    defaultValues: { name: 'Default Name', password: 'Default Pass' },
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log("form Submitted", data);
+    console.log('form Submitted', data);
   };
 
   // console.log(watch("example")); // watch input value by passing the name of it
-  const isCorrect = (
-    value: string,
-    formValues: Inputs
-  ): ValidateResult | Promise<ValidateResult> => {
-    console.log("formValues");
+  const isCorrect = (value: string, formValues: Inputs): ValidateResult | Promise<ValidateResult> => {
+    console.log('formValues');
     console.log(formValues);
-    if (value.includes("valid")) return true;
+    if (value.includes('valid')) return true;
     else return `Value must include the word "valid" `;
 
     return true; // Valid
-    return "Error Message!";
+    return 'Error Message!';
     // return new Promise<string | boolean>((res) => {
     //   setTimeout(() => {
     //     res(true); // Valid
@@ -48,7 +45,7 @@ export default function HookForm(): React.ReactElement {
   return (
     <>
       <Box m={3}>
-        <Typography variant="h4" align={"center"}>
+        <Typography variant="h4" align={'center'}>
           Hook Form
         </Typography>
       </Box>
@@ -59,8 +56,8 @@ export default function HookForm(): React.ReactElement {
             label="Name"
             placeholder="Hello World"
             error={Boolean(errors.name)}
-            helperText={errors.name ? errors.name?.message || "Inline" : null}
-            {...register("name", {
+            helperText={errors.name ? errors.name?.message || 'Inline' : null}
+            {...register('name', {
               validate: isCorrect,
             })}
           />
@@ -71,7 +68,7 @@ export default function HookForm(): React.ReactElement {
             error={Boolean(errors.password)}
             helperText={errors.password?.message ?? null}
             placeholder="********"
-            {...register("password", {
+            {...register('password', {
               required: true,
             })}
           />

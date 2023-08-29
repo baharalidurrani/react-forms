@@ -1,14 +1,14 @@
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Unstable_Grid2";
-import { FormEvent, useEffect, useRef } from "react";
-import ContainerDetails from "./ContainerDetails";
-import DropOffDetails from "./DropOffDetails";
-import GoodsDetails from "./GoodsDetails";
-import PickupDetails from "./PickupDetails";
-import ShipmentDetails from "./ShipmentDetails";
-import ShipmentSummary from "./ShipmentSummary";
-import SpecialDetails from "./SpecialDetails";
-import VehicleDetails from "./VehicleDetails";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Unstable_Grid2';
+import { FormEvent, useEffect, useRef } from 'react';
+import ContainerDetails from './ContainerDetails';
+import DropOffDetails from './DropOffDetails';
+import GoodsDetails from './GoodsDetails';
+import PickupDetails from './PickupDetails';
+import ShipmentDetails from './ShipmentDetails';
+import ShipmentSummary from './ShipmentSummary';
+import SpecialDetails from './SpecialDetails';
+import VehicleDetails from './VehicleDetails';
 
 export default function CreateShipment({
   submitCounter,
@@ -17,7 +17,7 @@ export default function CreateShipment({
   submitCounter: number;
   submitHandler: (event: FormEvent<HTMLFormElement>) => void;
 }): React.ReactElement {
-  console.log("🔄 CreateShipment Rendered");
+  console.log('🔄 CreateShipment Rendered');
 
   const formRef = useRef<HTMLFormElement>(null);
   useEffect(() => {
@@ -26,12 +26,7 @@ export default function CreateShipment({
   }, [submitCounter]);
 
   return (
-    <form
-      onSubmit={submitHandler}
-      ref={formRef}
-      name="shipperForm"
-      method="dialog"
-    >
+    <form onSubmit={submitHandler} ref={formRef} name="shipperForm" method="dialog">
       <Grid container spacing={2} margin={1}>
         <Grid container xs={12} md={8}>
           <Grid xs={12}>

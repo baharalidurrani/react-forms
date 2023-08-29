@@ -1,30 +1,27 @@
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import FormControl from "@mui/material/FormControl";
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Unstable_Grid2";
-import FormAutocomplete from "./FormAutocomplete";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import FormControl from '@mui/material/FormControl';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import FormAutocomplete from './FormAutocomplete';
 
 export default function VehicleDetails(): React.ReactElement {
-  console.log("🔄 VehicleDetails Rendered");
+  console.log('🔄 VehicleDetails Rendered');
 
-  function handleVehicleTypeChange(
-    _event: React.SyntheticEvent<Element, Event>,
-    value: string | null
-  ): void {
-    console.log("handleVehicleTypeChange", value);
+  function handleVehicleTypeChange(_event: React.SyntheticEvent<Element, Event>, value: string | null): void {
+    console.log('handleVehicleTypeChange', value);
   }
 
   return (
-    <Paper variant="outlined" sx={{ height: "100%", padding: 2 }}>
+    <Paper variant="outlined" sx={{ height: '100%', padding: 2 }}>
       <Grid container spacing={4}>
         <Grid xs={12}>
           <Stack direction="row" alignItems="center" gap={1}>
@@ -38,7 +35,7 @@ export default function VehicleDetails(): React.ReactElement {
             name="vehicleType"
             fullWidth
             onChange={handleVehicleTypeChange}
-            options={["Car", "Bike", "Cycle", "Bicycle", "Caddy"]}
+            options={['Car', 'Bike', 'Cycle', 'Bicycle', 'Caddy']}
           />
         </Grid>
         <Grid xs={6}>
@@ -47,14 +44,12 @@ export default function VehicleDetails(): React.ReactElement {
             name="vehicleVariant"
             fullWidth
             onChange={handleVehicleTypeChange}
-            options={["Car", "Bike", "Cycle", "Bicycle", "Caddy"]}
+            options={['Car', 'Bike', 'Cycle', 'Bicycle', 'Caddy']}
           />
         </Grid>
         <Grid xs={6}>
           <FormControl variant="outlined" fullWidth>
-            <InputLabel htmlFor="numberOfVehicles">
-              Number of Vehicles
-            </InputLabel>
+            <InputLabel htmlFor="numberOfVehicles">Number of Vehicles</InputLabel>
             <OutlinedInput
               id="numberOfVehicles"
               name="numberOfVehicles"
@@ -63,12 +58,11 @@ export default function VehicleDetails(): React.ReactElement {
               defaultValue={1}
               inputProps={{ min: 1 }}
               sx={{
-                input: { textAlign: "center" },
+                input: { textAlign: 'center' },
                 // Hide Up/Down Arrow on the number fields.
-                "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
-                  { display: "none" },
-                "& input[type=number]": {
-                  MozAppearance: "textfield",
+                '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': { display: 'none' },
+                '& input[type=number]': {
+                  MozAppearance: 'textfield',
                 },
               }}
               startAdornment={
@@ -89,11 +83,7 @@ export default function VehicleDetails(): React.ReactElement {
           </FormControl>
         </Grid>
         <Grid xs={6}>
-          <TextField
-            label="Total Shipment Weight"
-            name="shipmentWeight"
-            fullWidth
-          />
+          <TextField label="Total Shipment Weight" name="shipmentWeight" fullWidth />
         </Grid>
       </Grid>
     </Paper>

@@ -1,6 +1,6 @@
-import createCache from "@emotion/cache";
+import createCache from '@emotion/cache';
 
 export const muiCache = createCache({
-  key: "mui",
+  key: 'mui',
   prepend: true,
 });
