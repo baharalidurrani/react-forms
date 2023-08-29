@@ -19,7 +19,6 @@ export default function DropOffDetails(): React.ReactElement {
           <PinDropOutlinedIcon color="info" />
           <Typography variant="h6">Drop Off Details</Typography>
         </Stack>
-        <TextField label="Drop Off City" name="dropOffCity" fullWidth />
         <FormAutocomplete
           label="Drop Off City"
           name="dropOffCity"

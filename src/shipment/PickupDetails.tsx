@@ -22,7 +22,6 @@ export default function PickupDetails(): React.ReactElement {
           <PlaceOutlinedIcon color="info" />
           <Typography variant="h6">Pickup Details</Typography>
         </Stack>
-        <TextField label="Pickup City" name="pickupCity" fullWidth />
         <FormAutocomplete
           label="Pickup City"
           name="pickupCity"
