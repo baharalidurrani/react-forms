@@ -27,17 +27,17 @@ export default function CreateShipment({
   return (
     <form onSubmit={submitHandler} ref={formRef} name="shipperForm" method="dialog">
       <Grid container spacing={2} margin={1}>
-        <Grid container xs={12} md={8}>
+        <Grid container xs={12} lg={8}>
           <Grid xs={12}>
             <ShipmentDetails />
           </Grid>
           <Grid xs={12}>
             <VehicleDetails />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} md={6}>
             <PickupDetails />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} md={6}>
             <DropOffDetails />
           </Grid>
           <Grid xs={12}>
@@ -50,7 +50,7 @@ export default function CreateShipment({
             <SpecialDetails />
           </Grid>
         </Grid>
-        <Grid xs={12} md={4}>
+        <Grid xs={12} lg={4}>
           <ShipmentSummary />
         </Grid>
       </Grid>

@@ -24,19 +24,19 @@ export default function ContainerDetails(): React.ReactElement {
       </AccordionSummary>
       <AccordionDetails>
         <Grid container spacing={4}>
-          <Grid xs={6}>
+          <Grid xs={12} sm={6}>
             <TextField label="BL Number" name="blNumber" fullWidth />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} sm={6}>
             <TextField label="Return Date" name="returnDate" fullWidth />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} sm={6}>
             <TextField label="Detention Charges Per Day" name="detentionCharges" fullWidth />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} sm={6}>
             <TextField label="Number of Containers" name="numberOfContainers" fullWidth />
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={12} sm={6}>
             <TextField label="Return Location" name="returnLocation" fullWidth />
           </Grid>
         </Grid>

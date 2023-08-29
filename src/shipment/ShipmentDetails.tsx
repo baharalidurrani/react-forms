@@ -12,8 +12,9 @@ import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import FormAutocomplete from './FormAutocomplete';
+import Grid from '@mui/material/Unstable_Grid2';
 import { TShipper, fetchList as searchCallback } from './API';
+import FormAutocomplete from './FormAutocomplete';
 
 export default function ShipmentDetails(): React.ReactElement {
   console.log('🔄 ShipmentDetails Rendered');
@@ -25,12 +26,15 @@ export default function ShipmentDetails(): React.ReactElement {
 
   return (
     <Paper variant="outlined" sx={{ height: '100%', padding: 2 }}>
-      <Stack spacing={4}>
-        <Stack direction="row" alignItems="center" gap={1}>
-          <BookOutlinedIcon color="info" />
-          <Typography variant="h6">Shipment Details</Typography>
-        </Stack>
-        <Stack direction="row" spacing={4}>
+      <Grid container spacing={4}>
+        <Grid xs={12}>
+          <Stack direction="row" alignItems="center" gap={1}>
+            <BookOutlinedIcon color="info" />
+            <Typography variant="h6">Shipment Details</Typography>
+          </Stack>
+        </Grid>
+
+        <Grid xs={12} sm={6}>
           <FormAutocomplete
             required
             fullWidth
@@ -39,6 +43,8 @@ export default function ShipmentDetails(): React.ReactElement {
             onChange={handleShipperEntity}
             searchCallback={searchCallback}
           />
+        </Grid>
+        <Grid xs={12} sm={6}>
           <FormAutocomplete
             required
             label="Shipper Project"
@@ -47,13 +53,16 @@ export default function ShipmentDetails(): React.ReactElement {
             onChange={handleShipperEntity}
             searchCallback={searchCallback}
           />
-        </Stack>
-        <Stack direction="row" spacing={4}>
-          <TextField label="Shipper Personal Name" name="shipperName" fullWidth />
-          <TextField label="Contact Number" name="shipperContactNumber" type="tel" fullWidth />
-        </Stack>
+        </Grid>
 
-        <Stack direction="row" spacing={4}>
+        <Grid xs={12} sm={6}>
+          <TextField label="Shipper Personal Name" name="shipperName" fullWidth />
+        </Grid>
+        <Grid xs={12} sm={6}>
+          <TextField label="Contact Number" name="shipperContactNumber" type="tel" fullWidth />
+        </Grid>
+
+        <Grid xs={12} sm={6}>
           <FormControl fullWidth>
             <FormLabel id="radio-buttons-group-payment-type-label">
               Select Payment Type
@@ -73,7 +82,9 @@ export default function ShipmentDetails(): React.ReactElement {
               <FormControlLabel value="toPay" control={<Radio />} label="To Pay" />
             </RadioGroup>
           </FormControl>
+        </Grid>
 
+        <Grid xs={12} sm={6}>
           <FormControl fullWidth>
             <FormLabel id="radio-buttons-group-pod-label">
               POD Hard Copy
@@ -93,9 +104,9 @@ export default function ShipmentDetails(): React.ReactElement {
               <FormControlLabel value={false} control={<Radio />} label="Not Required" />
             </RadioGroup>
           </FormControl>
-        </Stack>
+        </Grid>
 
-        <Stack direction="row" spacing={4}>
+        <Grid xs={12} sm={6}>
           <FormControl fullWidth>
             <FormLabel id="radio-buttons-group-shipment-type-label">
               Select Shipment Type
@@ -115,7 +126,9 @@ export default function ShipmentDetails(): React.ReactElement {
               <FormControlLabel value="contractual" control={<Radio />} label="Contractual" />
             </RadioGroup>
           </FormControl>
+        </Grid>
 
+        <Grid xs={12} sm={6}>
           <FormControl fullWidth>
             <FormLabel id="radio-buttons-group-pricing-type-label">
               Select Pricing Type
@@ -135,11 +148,14 @@ export default function ShipmentDetails(): React.ReactElement {
               <FormControlLabel value="perTonne" control={<Radio />} label="Per Tonne" />
             </RadioGroup>
           </FormControl>
-        </Stack>
-        <Stack direction="row" spacing={4}>
+        </Grid>
+
+        <Grid xs={12} sm={6}>
           <FormControl fullWidth>
             <FormControlLabel control={<Switch name="autoBitAcceptance" />} label="Auto Bid Acceptance" />
           </FormControl>
+        </Grid>
+        <Grid xs={12} sm={6}>
           <FormControl fullWidth>
             <FormControlLabel
               control={<Switch name="autoBitNegotiation" />}
@@ -159,12 +175,15 @@ export default function ShipmentDetails(): React.ReactElement {
               }
             />
           </FormControl>
-        </Stack>
-        <Stack direction="row" spacing={4}>
+        </Grid>
+
+        <Grid xs={12} sm={6}>
           <TextField label="Shipper Rate" name="shipperRate" fullWidth />
+        </Grid>
+        <Grid xs={12} sm={6}>
           <TextField label="Maximum Amount" name="maximumAmount" fullWidth />
-        </Stack>
-      </Stack>
+        </Grid>
+      </Grid>
     </Paper>
   );
 }

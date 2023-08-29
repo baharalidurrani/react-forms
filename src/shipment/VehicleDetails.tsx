@@ -36,7 +36,7 @@ export default function VehicleDetails(): React.ReactElement {
             <Typography variant="h6">Vehicle Details</Typography>
           </Stack>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} sm={6}>
           <FormAutocomplete
             label="Vehicle Type"
             name="vehicleType"
@@ -45,7 +45,7 @@ export default function VehicleDetails(): React.ReactElement {
             options={['Car', 'Bike', 'Cycle', 'Bicycle', 'Caddy']}
           />
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} sm={6}>
           <FormAutocomplete
             label="Vehicle Variant"
             name="vehicleVariant"
@@ -54,7 +54,7 @@ export default function VehicleDetails(): React.ReactElement {
             options={['Car', 'Bike', 'Cycle', 'Bicycle', 'Caddy']}
           />
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} sm={6}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel htmlFor="numberOfVehicles">Number of Vehicles</InputLabel>
             <OutlinedInput
@@ -85,7 +85,7 @@ export default function VehicleDetails(): React.ReactElement {
             />
           </FormControl>
         </Grid>
-        <Grid xs={6}>
+        <Grid xs={12} sm={6}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel htmlFor="shipmentWeight">Total Shipment Weight</InputLabel>
             <OutlinedInput
