@@ -2,8 +2,8 @@ import { Box, Container, Divider } from '@mui/material';
 import FormikForm from './forms/formik/FormikForm';
 import HookForm from './forms/hook/HookForm';
 import VanillaForm from './forms/vanilla/VanillaForm';
+import CreateShipment from './shipment/CreateShipment';
 import CustomMuiTheme from './theme/CustomMuiTheme';
-import CreateShipmentDialog from './shipment/CreateShipmentDialog';
 
 export default function App() {
   console.log('🚀🚀🚀 App Rendered');
@@ -11,7 +11,8 @@ export default function App() {
   return (
     <CustomMuiTheme>
       <Container>
-        <CreateShipmentDialog />
+        <CreateShipment />
+        <Box m={3} />
         <VanillaForm />
         <Box m={3} />
         <Divider />
