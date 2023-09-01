@@ -10,9 +10,9 @@ export default function App() {
 
   return (
     <CustomMuiTheme>
+      <CreateShipment />
+      <Box m={3} />
       <Container>
-        <CreateShipment />
-        <Box m={3} />
         <VanillaForm />
         <Box m={3} />
         <Divider />

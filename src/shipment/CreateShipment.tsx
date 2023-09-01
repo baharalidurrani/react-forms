@@ -34,7 +34,7 @@ export default function CreateShipment({
 
   return (
     <form onSubmit={submitHandler || localSubmitHandler} ref={formRef} name="shipperForm" method="dialog">
-      <Grid container spacing={2} disableEqualOverflow margin={1}>
+      <Grid container spacing={2} margin={1}>
         <Grid container xs={12} lg={8}>
           <Grid xs={12}>
             <ShipmentDetails />
