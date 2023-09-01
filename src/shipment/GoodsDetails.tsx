@@ -49,7 +49,7 @@ export default function GoodsDetails(): React.ReactElement {
           >
             <Grid container>
               {images.map((image, i) => (
-                <Grid xs={6} md={2} display="flex" justifyContent="center" alignItems="center" key={i}>
+                <Grid xs={6} md={2} display="flex" justifyContent="center" key={i}>
                   <FormControlLabel
                     key={i}
                     value={i}
