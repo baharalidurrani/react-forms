@@ -11,6 +11,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
 import ReactIcon from '../assets/react.svg';
 
 const images = [
@@ -46,24 +47,34 @@ export default function GoodsDetails(): React.ReactElement {
             // defaultValue="toPay"
             name="goodsType"
           >
-            {images.map((image, i) => (
-              <FormControlLabel
-                key={i}
-                value={i}
-                label={'Good ' + i}
-                labelPlacement="bottom"
-                control={
-                  <Radio
-                    icon={<Avatar alt={'Good item number ' + i} src={image} />}
-                    checkedIcon={
-                      <Avatar alt="selected">
-                        <CheckCircle fontSize="large" color="primary" />
-                      </Avatar>
+            <Grid container>
+              {images.map((image, i) => (
+                <Grid xs={6} md={2} display="flex" justifyContent="center" alignItems="center" key={i}>
+                  <FormControlLabel
+                    key={i}
+                    value={i}
+                    label={'Good ' + i}
+                    labelPlacement="bottom"
+                    control={
+                      <Radio
+                        icon={
+                          <Avatar
+                            alt={'Good item number ' + i}
+                            src={image}
+                            sx={{ width: 70, height: 70, padding: 1 }}
+                          />
+                        }
+                        checkedIcon={
+                          <Avatar alt="selected" sx={{ width: 70, height: 70 }}>
+                            <CheckCircle fontSize="large" color="primary" />
+                          </Avatar>
+                        }
+                      />
                     }
                   />
-                }
-              />
-            ))}
+                </Grid>
+              ))}
+            </Grid>
           </RadioGroup>
         </FormControl>
       </AccordionDetails>
