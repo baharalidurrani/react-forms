@@ -1,4 +1,5 @@
 import Autocomplete from '@mui/material/Autocomplete';
+import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 import debounce from '@mui/material/utils/debounce';
 import * as React from 'react';
@@ -27,7 +28,8 @@ export default function FormAutocomplete<T>({
   const [loading, setLoading] = React.useState(false);
   const [optionsState, setOptionsState] = React.useState<T[]>(options || []);
 
-  const handleInputChange = async (_event: React.SyntheticEvent<Element, Event>, value: string): Promise<void> => {
+  const handleInputChange = async (event: React.SyntheticEvent<Element, Event>, value: string): Promise<void> => {
+    if (event.type !== 'change') return;
     setLoading(true);
     value && searchCallback && setOptionsState(await searchCallback(value));
     setLoading(false);
@@ -41,7 +43,23 @@ export default function FormAutocomplete<T>({
       onInputChange={searchCallback && debounce(handleInputChange, 500)}
       onChange={onChange}
       loading={loading}
-      renderInput={(params) => <TextField {...params} label={label} name={name} required={required} />}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label={label}
+          name={name}
+          required={required}
+          InputProps={{
+            ...params.InputProps,
+            endAdornment: (
+              <React.Fragment>
+                {loading && <CircularProgress />}
+                {params.InputProps.endAdornment}
+              </React.Fragment>
+            ),
+          }}
+        />
+      )}
     />
   );
 }
