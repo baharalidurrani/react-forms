@@ -31,7 +31,19 @@ export default function PickupDetails(): React.ReactElement {
         />
         <TextField label="Pickup Address" name="pickupAddress" fullWidth />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateTimePicker label="Date & Time" disablePast />
+          <DateTimePicker
+            label="Date & Time"
+            disablePast
+            // defaultValue={dayjs(new Date())}
+            // onChange={handleDateChange}
+            slotProps={{
+              textField: {
+                required: true,
+                name: 'pickupDate',
+                fullWidth: true,
+              },
+            }}
+          />
         </LocalizationProvider>
       </Stack>
     </Paper>

@@ -7,6 +7,9 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 export default function ContainerDetails(): React.ReactElement {
   console.log('🔄 ContainerDetails Rendered');
@@ -28,7 +31,17 @@ export default function ContainerDetails(): React.ReactElement {
             <TextField label="BL Number" name="blNumber" fullWidth />
           </Grid>
           <Grid xs={12} sm={6}>
-            <TextField label="Return Date" name="returnDate" fullWidth />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateTimePicker
+                label="Return Date"
+                disablePast
+                // defaultValue={dayjs(new Date())}
+                // onChange={handleDateChange}
+                slotProps={{
+                  textField: { fullWidth: true, name: 'returnDate' },
+                }}
+              />
+            </LocalizationProvider>
           </Grid>
           <Grid xs={12} sm={6}>
             <TextField label="Detention Charges Per Day" name="detentionCharges" fullWidth />
