@@ -66,8 +66,8 @@ export default function ShipmentDetails(): React.ReactElement {
             required
             inputProps={{
               pattern: '03[0-9]{9}',
-              minlength: 11,
-              maxlength: 11,
+              minLength: 11,
+              maxLength: 11,
             }}
             // onBlur="this.reportValidity()"
           />

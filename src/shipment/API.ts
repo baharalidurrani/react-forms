@@ -11,7 +11,7 @@ export async function fetchList(keyword: string): Promise<TShipper[]> {
           f.label.toLocaleLowerCase().includes(keyword.toLocaleLowerCase()),
         ),
       );
-    }, 3000);
+    }, 1000);
   });
 }
 
