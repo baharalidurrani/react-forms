@@ -14,7 +14,7 @@ export default function CreateShipment({
   submitHandler,
 }: {
   submitCounter?: number;
-  submitHandler?: (event: FormEvent<HTMLFormElement>) => void;
+  submitHandler?: (_event: FormEvent<HTMLFormElement>) => void;
 }): React.ReactElement {
   console.log('🔄 CreateShipment Rendered');
 

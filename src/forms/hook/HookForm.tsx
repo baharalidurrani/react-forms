@@ -8,6 +8,7 @@ import { SubmitHandler, ValidateResult, useForm } from 'react-hook-form';
 type Inputs = {
   name: string;
   password: string;
+  testPhone: string;
 };
 
 export default function HookForm(): React.ReactElement {
@@ -26,9 +27,7 @@ export default function HookForm(): React.ReactElement {
   };
 
   // console.log(watch("example")); // watch input value by passing the name of it
-  const isCorrect = (value: string, formValues: Inputs): ValidateResult | Promise<ValidateResult> => {
-    console.log('formValues');
-    console.log(formValues);
+  const isCorrect = (value: string, _formValues: Inputs): ValidateResult | Promise<ValidateResult> => {
     if (value.includes('valid')) return true;
     else return `Value must include the word "valid" `;
 
@@ -41,7 +40,7 @@ export default function HookForm(): React.ReactElement {
     //   }, 5000);
     // });
   };
-  console.log(errors);
+  console.log('errors', errors);
   return (
     <>
       <Box m={3}>
@@ -70,6 +69,25 @@ export default function HookForm(): React.ReactElement {
             placeholder="********"
             {...register('password', {
               required: true,
+            })}
+          />
+          <TextField
+            label="Test Phone"
+            // name="testPhone"
+            fullWidth
+            required
+            inputProps={{
+              pattern: '03[0-9]{9}',
+              minlength: 11,
+              maxlength: 11,
+            }}
+            // onBlur="this.reportValidity()"
+            error={Boolean(errors.testPhone)}
+            helperText={errors.testPhone?.message ?? null}
+            {...register('testPhone', {
+              pattern: RegExp(/^03[0-9]{9}$/),
+              minLength: 11,
+              maxLength: 11,
             })}
           />
           <Button type="submit" variant="contained">

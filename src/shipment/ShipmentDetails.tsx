@@ -59,7 +59,18 @@ export default function ShipmentDetails(): React.ReactElement {
           <TextField label="Shipper Personal Name" name="shipperName" fullWidth />
         </Grid>
         <Grid xs={12} sm={6}>
-          <TextField label="Contact Number" name="shipperContactNumber" type="tel" fullWidth />
+          <TextField
+            label="Contact Number"
+            name="shipperContactNumber"
+            fullWidth
+            required
+            inputProps={{
+              pattern: '03[0-9]{9}',
+              minlength: 11,
+              maxlength: 11,
+            }}
+            // onBlur="this.reportValidity()"
+          />
         </Grid>
 
         <Grid xs={12} sm={6}>

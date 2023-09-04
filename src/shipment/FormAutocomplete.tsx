@@ -9,7 +9,7 @@ type TFormAutocompleteProps<T> = {
   name: string;
   required?: boolean;
   /** Must be provided in async use case. */
-  searchCallback?: (keyword: string) => T[] | Promise<T[]>;
+  searchCallback?: (_keyword: string) => T[] | Promise<T[]>;
 } & Partial<
   Pick<
     AutocompleteProps<T, undefined, undefined, undefined>,
