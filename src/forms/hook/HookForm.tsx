@@ -5,15 +5,31 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Controller, SubmitHandler, ValidateResult, useForm } from 'react-hook-form';
 import FormAutocomplete from '../../shipment/FormAutocomplete';
+import { OrType } from '../../utils/utilityTypes.type';
+
+type TCity = {
+  id: number;
+  label: string;
+};
+const CITIES: TCity[] = [
+  { id: 1, label: 'Islamabad' },
+  { id: 2, label: 'Karachi' },
+  { id: 3, label: 'Lahore' },
+  { id: 4, label: 'Peshawar' },
+  { id: 5, label: 'Faisalabad' },
+  { id: 6, label: 'Charsadda' },
+];
 
 type Inputs = {
   name: string;
   password: string;
   testPhone: string;
   controlled: string;
-  id: number | '';
-  city: string | '';
+  id: number;
+  city: TCity;
 };
+
+type EmptyInputs = OrType<Inputs, null | ''>;
 
 export default function HookForm(): React.ReactElement {
   console.log('🪝🪝🪝 HookForm Rendered');
@@ -23,17 +39,23 @@ export default function HookForm(): React.ReactElement {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({
-    defaultValues: { name: 'Default Name', password: 'Default Pass', controlled: '', id: '', city: 'Islamabad' },
+  } = useForm<EmptyInputs>({
+    defaultValues: {
+      name: 'Default Name',
+      password: 'Default Pass',
+      controlled: '',
+      id: '',
+      city: CITIES[1] /*or null*/,
+    },
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<EmptyInputs> = (data) => {
     console.log('form Submitted', data);
   };
 
   // console.log(watch("example")); // watch input value by passing the name of it
-  const isCorrect = (value: string, _formValues: Inputs): ValidateResult | Promise<ValidateResult> => {
-    if (value.includes('valid')) return true;
+  const isCorrect = (value: string | null, _formValues: EmptyInputs): ValidateResult | Promise<ValidateResult> => {
+    if (value?.includes('valid')) return true;
     else return `Value must include the word "valid" `;
 
     return true; // Valid
@@ -128,7 +150,7 @@ export default function HookForm(): React.ReactElement {
           <Controller
             name={'city'}
             control={control}
-            render={({ field: { onChange, ref, ...fields } }) => (
+            render={({ field: { onChange, ref, value, ...fields } }) => (
               <FormAutocomplete
                 {...fields}
                 error={Boolean(errors.city)}
@@ -136,10 +158,11 @@ export default function HookForm(): React.ReactElement {
                 helperText={errors.city?.message ?? null}
                 inputRef={ref}
                 label="City"
-                options={['Islamabad', 'Lahore', 'Karachi', 'Rawalpindi', 'Faisalabad']}
-                onChange={(_event: React.SyntheticEvent<Element, Event>, newValue: string | null) => {
-                  onChange(newValue ? newValue : null);
-                }}
+                value={value}
+                isOptionEqualToValue={(o, v) => Boolean(o && v && o.id === v.id)}
+                options={CITIES.length ? CITIES : value ? [value] : []}
+                getOptionLabel={(option) => option && option.label}
+                onChange={(_, newValue) => onChange(newValue)}
               />
             )}
           />
