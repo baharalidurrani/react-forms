@@ -1,38 +1,60 @@
-import Autocomplete, { AutocompleteProps } from '@mui/material/Autocomplete';
+import Autocomplete, { type AutocompleteProps } from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
-import TextField from '@mui/material/TextField';
+import TextField, { type TextFieldProps } from '@mui/material/TextField';
 import debounce from '@mui/material/utils/debounce';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 
 type TFormAutocompleteProps<T> = {
-  label: string;
-  name: string;
-  required?: boolean;
+  /**
+   * After effects of this prop will reset the value to null.
+   * @see https://stackoverflow.com/a/59845474/9486457
+   */
+  resetValueEffect?: string | number | null | undefined;
   /** Must be provided in async use case. */
   searchCallback?: (_keyword: string) => T[] | Promise<T[]>;
 } & Partial<
   Pick<
     AutocompleteProps<T, undefined, undefined, undefined>,
-    'disabled' | 'fullWidth' | 'options' | 'renderOption' | 'getOptionLabel' | 'onChange'
+    | 'disabled'
+    | 'fullWidth'
+    | 'getOptionLabel'
+    | 'isOptionEqualToValue'
+    | 'onBlur'
+    | 'onChange'
+    | 'options'
+    | 'renderOption'
+    | 'value'
   >
->;
+> &
+  Pick<TextFieldProps, 'error' | 'helperText' | 'inputRef' | 'label' | 'name' | 'required'>;
 
 export default function FormAutocomplete<T>({
   disabled,
+  error,
+  fullWidth,
+  getOptionLabel,
+  helperText,
+  inputRef,
+  isOptionEqualToValue,
   label,
   name,
-  required,
-  fullWidth,
+  onBlur,
+  onChange,
   options,
   renderOption,
-  getOptionLabel,
+  required,
+  resetValueEffect,
   searchCallback,
-  onChange,
+  value,
 }: TFormAutocompleteProps<T>): React.ReactElement {
-  console.log('🔄 Rendered: FormAutocomplete', name || label);
+  console.log('🔄 FormAutocomplete Rendered', name || label);
 
-  const [loading, setLoading] = React.useState(false);
-  const [optionsState, setOptionsState] = React.useState(options || []);
+  const [loading, setLoading] = useState(false);
+  const [optionsState, setOptionsState] = useState(options || []);
+  useEffect(() => {
+    options && setOptionsState(options);
+  }, [options]);
 
   const handleInputChange = async (event: React.SyntheticEvent<Element, Event>, value: string): Promise<void> => {
     // Avoid duplicate calling on final onChange event.
@@ -47,15 +69,22 @@ export default function FormAutocomplete<T>({
       disabled={disabled}
       disablePortal
       fullWidth={fullWidth}
+      getOptionLabel={getOptionLabel}
+      isOptionEqualToValue={isOptionEqualToValue}
+      key={resetValueEffect}
+      loading={loading}
+      onBlur={onBlur}
+      onChange={onChange}
+      onInputChange={searchCallback && debounce(handleInputChange, 500)}
       options={optionsState}
       renderOption={renderOption}
-      getOptionLabel={getOptionLabel}
-      onInputChange={searchCallback && debounce(handleInputChange, 500)}
-      onChange={onChange}
-      loading={loading}
+      value={value}
       renderInput={(params) => (
         <TextField
           {...params}
+          error={error}
+          helperText={helperText}
+          inputRef={inputRef}
           label={label}
           name={name}
           required={required}
