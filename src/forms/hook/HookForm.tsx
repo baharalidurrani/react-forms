@@ -43,6 +43,7 @@ export default function HookForm(): React.ReactElement {
     defaultValues: {
       name: 'Default Name',
       password: 'Default Pass',
+      testPhone: '',
       controlled: '',
       id: '',
       city: CITIES[1] /*or null*/,
@@ -98,23 +99,32 @@ export default function HookForm(): React.ReactElement {
               required: true,
             })}
           />
-          <TextField
-            label="Test Phone"
-            // name="testPhone"
-            fullWidth
-            inputProps={{
-              pattern: '03[0-9]{9}',
-              minLength: 11,
-              maxLength: 11,
-            }}
-            // onBlur="this.reportValidity()"
-            error={Boolean(errors.testPhone)}
-            helperText={errors.testPhone?.message ?? null}
-            {...register('testPhone', {
+          <Controller
+            name={'testPhone'}
+            control={control}
+            rules={{
               pattern: RegExp(/^03[0-9]{9}$/),
               minLength: 11,
               maxLength: 11,
-            })}
+            }}
+            render={({ field: { onChange, ...fields } }) => (
+              <TextField
+                {...fields}
+                onChange={(e) => {
+                  e.currentTarget.reportValidity();
+                  onChange(e.currentTarget.value.replace(/\D/g, ''));
+                }}
+                label="Test Phone"
+                fullWidth
+                inputProps={{
+                  pattern: '03[0-9]{9}',
+                  minLength: 11,
+                  maxLength: 11,
+                }}
+                error={Boolean(errors.testPhone)}
+                helperText={errors.testPhone?.message ?? null}
+              />
+            )}
           />
           <Controller
             name={'controlled'}
