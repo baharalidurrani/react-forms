@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 export default function ShipmentSummary(): React.ReactElement {
   console.log('🔄 ShipmentSummary Rendered');
   return (
-    <Paper variant="outlined" sx={{ padding: 2 }}>
+    <Paper variant="outlined" sx={{ padding: 2, position: 'sticky', top: (theme) => theme.spacing(2) }}>
       <Stack spacing={4}>
         <Stack direction="row" alignItems="center" gap={1}>
           <InfoOutlined color="info" />
